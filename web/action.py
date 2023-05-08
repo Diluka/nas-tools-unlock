@@ -4946,13 +4946,13 @@ class WebAction:
                     {
                         'name': '媒体服务器',
                         'level': 2,
-                        'page': 'downloader',
+                        'page': 'mediaserver',
                         'icon': '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-server-cog" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M3 4m0 3a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v2a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3z"></path><path d="M12 20h-6a3 3 0 0 1 -3 -3v-2a3 3 0 0 1 3 -3h10.5"></path><path d="M18 18m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path><path d="M18 14.5v1.5"></path><path d="M18 20v1.5"></path><path d="M21.032 16.25l-1.299 .75"></path><path d="M16.27 19l-1.3 .75"></path><path d="M14.97 16.25l1.3 .75"></path><path d="M19.733 19l1.3 .75"></path><path d="M7 8v.01"></path><path d="M7 16v.01"></path></svg>'
                     },
                     {
                         'name': '插件',
                         'level': 2,
-                        'page': 'mediaserver',
+                        'page': 'plugin',
                         'icon': '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-codesandbox" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>   <path d="M20 7.5v9l-4 2.25l-4 2.25l-4 -2.25l-4 -2.25v-9l4 -2.25l4 -2.25l4 2.25z"></path>   <path d="M12 12l4 -2.25l4 -2.25"></path>   <path d="M12 12l0 9"></path>   <path d="M12 12l-4 -2.25l-4 -2.25"></path>   <path d="M20 12l-4 2v4.75"></path>   <path d="M4 12l4 2l0 4.75"></path>   <path d="M8 5.25l4 2.25l4 -2.25"></path></svg>'
                     }
                 ]
