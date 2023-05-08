@@ -51,7 +51,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: windows
-        path: D:/a/nas-tools-unlock/nas-tools-unlock/nas-tools-unlock/package/dist/nas-tools.exe
+        path: D:/a/nas-tools-unlock/nas-tools-unlock/nas-tools-unlock/package/dist/nas-tools-unlock.exe
 
   Linux-build-amd64:
     runs-on: ubuntu-latest
