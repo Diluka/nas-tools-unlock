@@ -213,6 +213,7 @@ def web():
     CooperationSites = current_user.get_authsites()
     Menus = WebAction().get_user_menus().get("menus") or []
     Commands = WebAction().get_commands()
+    current_user.level = 2
     return render_template('navigation.html',
                            GoPage=GoPage,
                            CurrentUser=current_user,
