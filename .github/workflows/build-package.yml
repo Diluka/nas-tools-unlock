@@ -116,7 +116,7 @@ jobs:
           mkdir rootfs
           docker buildx build --platform linux/arm64 --file ./package/builder/Dockerfile --build-arg branch=master --output type=local,dest=./rootfs .
           mkdir -p /home/runner/work/nas-tools-unlock/nas-tools-unlock/nas-tools-unlock/package/dist/
-          cp ./rootfs/nas-tools-unlock /home/runner/work/nas-tools-unlock/nas-tools-unlock/nas-tools-unlock/package/dist/nas-tools-unlock.linux.arm64
+          cp ./rootfs/nas-tools /home/runner/work/nas-tools-unlock/nas-tools-unlock/nas-tools-unlock/package/dist/nas-tools-unlock.linux.arm64
         shell: pwsh
 
       - name: Upload linux file
@@ -142,7 +142,7 @@ jobs:
           mkdir rootfs
           docker buildx build --platform linux/amd64 --file ./package/builder/alpine.Dockerfile --build-arg branch=master --output type=local,dest=./rootfs .
           mkdir -p /home/runner/work/nas-tools-unlock/nas-tools-unlock/nas-tools-unlock/package/dist/
-          cp ./rootfs/nas-tools-unlock /home/runner/work/nas-tools-unlock/nas-tools-unlock/nas-tools-unlock/package/dist/nas-tools-unlock.linux.musl.amd64
+          cp ./rootfs/nas-tools /home/runner/work/nas-tools-unlock/nas-tools-unlock/nas-tools-unlock/package/dist/nas-tools-unlock.linux.musl.amd64
         shell: pwsh
 
       - name: Upload linux file
@@ -168,7 +168,7 @@ jobs:
           mkdir rootfs
           docker buildx build --platform linux/arm64 --file ./package/builder/alpine.Dockerfile --build-arg branch=master --output type=local,dest=./rootfs .
           mkdir -p /home/runner/work/nas-tools-unlock/nas-tools-unlock/nas-tools-unlock/package/dist/
-          cp ./rootfs/nas-tools-unlock /home/runner/work/nas-tools-unlock/nas-tools-unlock/nas-tools-unlock/package/dist/nas-tools-unlock.linux.musl.arm64
+          cp ./rootfs/nas-tools /home/runner/work/nas-tools-unlock/nas-tools-unlock/nas-tools-unlock/package/dist/nas-tools-unlock.linux.musl.arm64
         shell: pwsh
 
       - name: Upload linux file
