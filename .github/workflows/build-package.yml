@@ -212,7 +212,7 @@ jobs:
           cp -r ./scripts/. $Python_ROOT_DIR/lib/python3.10/site-packages/scripts/
           cd package
           pyinstaller nas-tools.spec
-          mv ./dist/nas-tools-unlock ./dist/nas-tools-unlock.macos
+          mv ./dist/nas-tools ./dist/nas-tools-unlock.macos
           pwd
           ls -all ./dist/
         shell: bash
