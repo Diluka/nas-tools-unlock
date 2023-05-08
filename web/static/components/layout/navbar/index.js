@@ -74,7 +74,7 @@ export class LayoutNavbar extends CustomElement {
 
     // 检查更新
     if (this.layout_userlevel > 1 && this.layout_useradmin === "1") {
-      this._check_new_version();
+      // this._check_new_version();
     }
   }
 
