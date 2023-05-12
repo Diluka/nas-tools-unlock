@@ -51,7 +51,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: windows
-        path: D:/a/nas-tools-unlock/nas-tools-unlock/nas-tools-unlock/package/dist/nas-tools-unlock.exe
+        path: D:/a/nas-tools-unlock/nas-tools-unlock/nas-tools-unlock/package/dist/nas-tools.exe
 
   Linux-build-amd64:
     runs-on: ubuntu-latest
@@ -89,7 +89,7 @@ jobs:
           pwd
           ls -all
           pyinstaller nas-tools.spec
-          mv /home/runner/work/nas-tools-unlock/nas-tools-unlock/nas-tools-unlock/package/dist/nas-tools-unlock /home/runner/work/nas-tools-unlock/nas-tools-unlock/nas-tools-unlock/package/dist/nas-tools-unlock.linux.amd64
+          mv /home/runner/work/nas-tools-unlock/nas-tools-unlock/nas-tools-unlock/package/dist/nas-tools /home/runner/work/nas-tools-unlock/nas-tools-unlock/nas-tools-unlock/package/dist/nas-tools-unlock.linux.amd64
           ls -all /home/runner/work/nas-tools-unlock/nas-tools-unlock/nas-tools-unlock/package/dist
         shell: pwsh
 
@@ -257,7 +257,7 @@ jobs:
       id: create_release
       uses: actions/create-release@latest
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
       with:
         tag_name: v${{ env.app_version }}
         release_name: v${{ env.app_version }}
