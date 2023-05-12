@@ -245,11 +245,11 @@ jobs:
         ls -all
         mkdir releases
         mv ./windows/nas-tools.exe /home/runner/work/nas-tools-unlock/nas-tools-unlock/releases/nastool_win_v${{ env.app_version }}.exe
-        mv ./linux-amd64/nas-tools.linux.amd64 /home/runner/work/nas-tools-unlock/nas-tools-unlock/releases/nastool_linux_amd64_v${{ env.app_version }}
-        mv ./linux-arm64/nas-tools.linux.arm64 /home/runner/work/nas-tools-unlock/nas-tools-unlock/releases/nastool_linux_arm64_v${{ env.app_version }}
-        mv ./linux-musl-amd64/nas-tools.linux.musl.amd64 /home/runner/work/nas-tools-unlock/nas-tools-unlock/releases/nastool_linux_musl_amd64_v${{ env.app_version }}
-        mv ./linux-musl-arm64/nas-tools.linux.musl.arm64 /home/runner/work/nas-tools-unlock/nas-tools-unlock/releases/nastool_linux_musl_arm64_v${{ env.app_version }}
-        mv ./macos/nas-tools.macos /home/runner/work/nas-tools-unlock/nas-tools-unlock/releases/nastool_macos_v${{ env.app_version }}
+        mv ./linux-amd64/nas-tools-unlock.linux.amd64 /home/runner/work/nas-tools-unlock/nas-tools-unlock/releases/nastool_linux_amd64_v${{ env.app_version }}
+        mv ./linux-arm64/nas-tools-unlock.linux.arm64 /home/runner/work/nas-tools-unlock/nas-tools-unlock/releases/nastool_linux_arm64_v${{ env.app_version }}
+        mv ./linux-musl-amd64/nas-tools-unlock.linux.musl.amd64 /home/runner/work/nas-tools-unlock/nas-tools-unlock/releases/nastool_linux_musl_amd64_v${{ env.app_version }}
+        mv ./linux-musl-arm64/nas-tools-unlock.linux.musl.arm64 /home/runner/work/nas-tools-unlock/nas-tools-unlock/releases/nastool_linux_musl_arm64_v${{ env.app_version }}
+        mv ./macos/nas-tools-unlock.macos /home/runner/work/nas-tools-unlock/nas-tools-unlock/releases/nastool_macos_v${{ env.app_version }}
         pwd
         ls -all
 
