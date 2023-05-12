@@ -391,7 +391,7 @@ class SITEBRUSHTORRENTS(Base):
     TASK_ID = Column(Text, index=True)
     TORRENT_NAME = Column(Text)
     TORRENT_SIZE = Column(Text)
-    ENCLOSURE = Column(Text)
+    ENCLOSURE = Column(Text, index=True)
     DOWNLOADER = Column(Text)
     DOWNLOAD_ID = Column(Text)
     LST_MOD_DATE = Column(Text)
@@ -509,7 +509,7 @@ class TRANSFERHISTORY(Base):
     DEST = Column(Text)
     DEST_PATH = Column(Text)
     DEST_FILENAME = Column(Text)
-    DATE = Column(Text)
+    DATE = Column(Text, index=True)
 
     def as_dict(self):
         return {c.name: getattr(self, c.name) for c in self.__table__.columns}

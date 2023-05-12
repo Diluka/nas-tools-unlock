@@ -42,6 +42,9 @@ class ModuleConf(object):
         "move": RmtMode.MOVE
     }
 
+    # 远程转移模式
+    REMOTE_RMT_MODES = [RmtMode.RCLONE, RmtMode.RCLONECOPY, RmtMode.MINIO, RmtMode.MINIOCOPY]
+
     # 消息通知类型
     MESSAGE_CONF = {
         "client": {
@@ -520,11 +523,9 @@ class ModuleConf(object):
         }
     }
 
-    # 网络测试对象
+    # 网络测试对象，TMDB API除外
     NETTEST_TARGETS = [
         "www.themoviedb.org",
-        "api.themoviedb.org",
-        "api.tmdb.org",
         "image.tmdb.org",
         "webservice.fanart.tv",
         "api.telegram.org",

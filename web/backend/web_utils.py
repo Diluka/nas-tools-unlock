@@ -1,4 +1,3 @@
-import io
 from functools import lru_cache
 from urllib.parse import quote
 
@@ -8,7 +7,7 @@ from app.media import Media, Bangumi, DouBan
 from app.media.meta import MetaInfo
 from app.utils import StringUtils, ExceptionUtils, SystemUtils, RequestUtils, IpUtils
 from app.utils.types import MediaType
-from config import Config, NASTOOL_UPDATE_URL
+from config import Config
 from version import APP_VERSION
 
 
@@ -24,13 +23,16 @@ class WebUtils:
         url = 'https://sp0.baidu.com/8aQDcjqpAAV3otqbppnN2DJv/api.php?co=&resource_id=6006&t=1529895387942&ie=utf8' \
               '&oe=gbk&cb=op_aladdin_callback&format=json&tn=baidu&' \
               'cb=jQuery110203920624944751099_1529894588086&_=1529894588088&query=%s' % ip
-        r = RequestUtils().get_res(url)
-        r.encoding = 'gbk'
-        html = r.text
         try:
-            c1 = html.split('location":"')[1]
-            c2 = c1.split('","')[0]
-            return c2
+            r = RequestUtils().get_res(url)
+            if r:
+                r.encoding = 'gbk'
+                html = r.text
+                c1 = html.split('location":"')[1]
+                c2 = c1.split('","')[0]
+                return c2
+            else:
+                return ""
         except Exception as err:
             ExceptionUtils.exception_traceback(err)
             return ""
@@ -53,7 +55,7 @@ class WebUtils:
         try:
             releases_update_only = Config().get_config("app").get("releases_update_only")
             version_res = RequestUtils(proxies=Config().get_proxies()).get_res(
-                NASTOOL_UPDATE_URL % quote(WebUtils.get_current_version()))
+                f"https://nastool.cn/{quote(WebUtils.get_current_version())}/update")
             if version_res:
                 ver_json = version_res.json()
                 version = ver_json.get("latest")
