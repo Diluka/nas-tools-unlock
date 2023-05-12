@@ -618,8 +618,9 @@ class WebAction:
         dl_setting = data.get("dl_setting")
         files = data.get("files") or []
         urls = data.get("urls") or []
-        if not files and not urls:
-            return {"code": -1, "msg": "没有种子文件或者种子链接"}
+        magnets = data.get("magnets") or []
+        if not files and not urls and not magnets:
+            return {"code": -1, "msg": "没有种子文件/种子链接/磁力链接"}
         # 下载种子
         for file_item in files:
             if not file_item:
@@ -645,7 +646,7 @@ class WebAction:
             # 查询站点
             site_info = Sites().get_sites(siteurl=url)
             if not site_info:
-                return {"code": -1, "msg": "根据链接地址未匹配到站点"}
+                continue
             # 下载种子文件，并读取信息
             file_path, _, _, _, retmsg = Torrent().get_torrent_info(
                 url=url,
@@ -665,7 +666,27 @@ class WebAction:
                                   torrent_file=file_path,
                                   in_from=SearchType.WEB,
                                   user_name=current_user.username)
-
+        if magnets and not isinstance(magnets, list):
+            magnets = [magnets]
+        for magnet in magnets:
+            if not magnet:
+                continue
+            file_path = None
+            title = Torrent().get_magnet_title(magnet)
+            if title:
+                media_info = Media().get_media_info(title=title)
+            else:
+                media_info = MetaInfo(title="磁力链接")
+                media_info.org_string = magnet
+            media_info.set_torrent_info(enclosure=magnet,
+                                        download_volume_factor=0,
+                                        upload_volume_factor=1)
+            Downloader().download(media_info=media_info,
+                                  download_dir=dl_dir,
+                                  download_setting=dl_setting,
+                                  torrent_file=file_path,
+                                  in_from=SearchType.WEB,
+                                  user_name=current_user.username)
         return {"code": 0, "msg": "添加下载完成！"}
 
     @staticmethod

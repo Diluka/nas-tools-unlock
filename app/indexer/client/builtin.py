@@ -91,7 +91,7 @@ class BuiltinIndexer(_IIndexClient):
                     indexer.name = site.get("name")
                     ret_indexers.append(indexer)
         # 公开站点
-        if public and self._show_more_sites:
+        if public:
             for indexer in IndexerHelper().get_all_indexers():
                 if not indexer.get("public"):
                     continue

@@ -27,6 +27,9 @@
             <button class="dropdown-item" onclick="show_torrent_download_modal('url')">
               种子链接
             </button>
+            <button class="dropdown-item" onclick="show_torrent_download_modal('magnet')">
+              磁力链接
+            </button>
           </div>
         </div>
       </div>
@@ -172,13 +175,15 @@
   function show_torrent_download_modal(type) {
     show_download_modal('', '', '', function(){
       let urls = $("#torrent_urls").val();
-      if ((!TorrentDropZone || !TorrentDropZone.files || !TorrentDropZone.files[0]) && !urls) {
+      let magnets = $("#torrent_magnets").val();
+      if ((!TorrentDropZone || !TorrentDropZone.files || !TorrentDropZone.files[0]) && !urls && !magnets) {
         return;
       }
       $("#search_download_btn").text("处理中...").attr("disabled", true);
       const params = {
         "files": TorrentDropZone.files,
         "urls": urls.split("\n"),
+        "magnets": magnets.split("\n"),
         "dl_dir": get_savepath("search_download_dir", "search_download_dir_manual"),
         "dl_setting": $("#search_download_setting").val()
       }
@@ -188,6 +193,7 @@
         if (ret.code == 0) {
           TorrentDropZone.removeAllFiles();
           $("#torrent_urls").val("");
+          $("#torrent_magnets").val("");
           window_history_refresh();
         } else {
           show_fail_modal(`添加下载失败：${ret.msg}`, function() {

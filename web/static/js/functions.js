@@ -1291,12 +1291,19 @@ function show_download_modal(id, name, site = undefined, func = undefined, show_
   if (show_type === 'torrent') {
     $("#torrent_files").show();
     $("#torrent_urls").hide();
+    $("#torrent_magnets").hide();
   } else if (show_type === 'url') {
     $("#torrent_urls").show();
     $("#torrent_files").hide();
+    $("#torrent_magnets").hide();
+  } else if (show_type === 'magnet') {
+    $("#torrent_urls").hide();
+    $("#torrent_files").hide();
+    $("#torrent_magnets").show();
   } else {
     $("#torrent_files").hide();
     $("#torrent_urls").hide();
+    $("#torrent_magnets").hide();
   }
 
   // 绑定下载按钮事件

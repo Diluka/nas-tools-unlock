@@ -206,6 +206,15 @@ class Torrent:
         return file_name
 
     @staticmethod
+    def get_magnet_title(url):
+        """
+        从磁力链接中获取标题
+        """
+        if not url:
+            return ""
+        title = re.findall(r"dn=(.+)&?", url)
+        return unquote(title[0]) if title else ""
+    @staticmethod
     def get_intersection_episodes(target, source, title):
         """
         对两个季集字典进行判重，有相同项目的取集的交集
