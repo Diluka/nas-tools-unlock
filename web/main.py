@@ -672,6 +672,51 @@ def service():
 
     # 所有服务
     Services = current_user.get_services()
+    
+    # 补充丢失的菜单配置数据
+    if 'rssdownload' not in Services:
+        Services['rssdownload']={
+            'svg': '''
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-cloud-download" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M19 18a3.5 3.5 0 0 0 0 -7h-1a5 4.5 0 0 0 -11 -2a4.6 4.4 0 0 0 -2.1 8.4"></path>
+                    <line x1="12" y1="13" x2="12" y2="22"></line>
+                    <polyline points="9 19 12 22 15 19"></polyline>
+                </svg>
+            ''',
+            'name': 'RSS订阅',  
+            'id': 'rssdownload', 
+            'color': "blue"
+        }
+    if 'subscribe_search_all' not in Services:
+        Services['subscribe_search_all']={
+            'svg': '''
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <circle cx="10" cy="10" r="7"></circle>
+                    <line x1="21" y1="21" x2="15" y2="15"></line>
+                </svg>
+            ''',
+            'name': '订阅搜索',  
+            'id': 'subscribe_search_all',
+            'color': "blue"
+        }
+    if 'pttransfer' not in Services:
+        Services['pttransfer']={
+            'svg': '''
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-replace" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <rect x="3" y="3" width="6" height="6" rx="1"></rect>
+                    <rect x="15" y="15" width="6" height="6" rx="1"></rect>
+                    <path d="M21 11v-3a2 2 0 0 0 -2 -2h-6l3 3m0 -6l-3 3"></path>
+                    <path d="M3 13v3a2 2 0 0 0 2 2h6l-3 -3m0 6l3 -3"></path>
+                </svg>
+            ''',
+            'name': '下载文件转移',  
+            'id': 'pttransfer',
+            'color': "green"
+        }
+    
     pt = Config().get_config('pt')
     # RSS订阅
     if "rssdownload" in Services:
@@ -844,6 +889,7 @@ def basic():
     RmtModeDict = WebAction().get_rmt_modes()
     CustomScriptCfg = SystemConfig().get(SystemConfigKey.CustomScript)
     ScraperConf = SystemConfig().get(SystemConfigKey.UserScraperConf) or {}
+    current_user.level = 2
     return render_template("setting/basic.html",
                            Config=Config().get_config(),
                            Proxy=proxy,
